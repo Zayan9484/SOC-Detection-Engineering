@@ -1,0 +1,10 @@
+<!--
+Windows File Integrity Monitoring configuration used in Scenario 05.
+
+This directory is monitored in real time by the Wazuh Agent.
+report_changes enables Wazuh to record content changes for supported text files.
+-->
+
+<syscheck>
+  <directories realtime="yes" report_changes="yes">C:\fim-demo</directories>
+</syscheck>
