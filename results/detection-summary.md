@@ -5,13 +5,9 @@ This document summarizes the detection scenarios implemented in the SOC Detectio
 | # | Scenario | Activity / Attack | Telemetry Source | Detection Engine | Rule ID / SID | Severity | MITRE ATT&CK |
 |---|---|---|---|---|---|---|---|
 | 1 | ICMP Ping Detection | ICMP echo request sent from Kali to Ubuntu | Suricata network traffic | Suricata + Wazuh | Suricata SID `1000001` / Wazuh Rule `86601` | Level 3 | N/A |
-
 | 2 | TCP SYN Port Scan Detection | Nmap SYN scan against Ubuntu | Suricata network traffic | Suricata + Wazuh | Suricata SID `1000002` / Wazuh Rule `86601` | Level 3 | N/A |
-
 | 3 | SSH Brute-Force Detection | Multiple failed SSH authentication attempts | Ubuntu authentication logs | Wazuh | Rule `5763` | Level 10 | `T1110` — Brute Force |
-
 | 4 | Windows Brute-Force Correlation | Multiple failed Windows logon attempts | Windows Security Event ID `4625` | Wazuh | Custom Rule `100100` | Level 10 | `T1110` — Brute Force |
-
 | 5 | Windows File Integrity Monitoring | File creation, modification, and deletion | Wazuh Syscheck / FIM | Wazuh | Rules `554`, `550`, `553` | Levels 5–7 | N/A |
 
 ## Detection Coverage

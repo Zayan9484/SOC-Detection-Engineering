@@ -141,7 +141,7 @@ The project demonstrates:
 ## Repository Structure
 
 ```text
-SOC-Detection-Engineering-Lab/
+SOC-Detection-Engineering/
 │
 ├── configs/
 │   └── windows-fim-config.xml

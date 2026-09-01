@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This virtual lab is designed to test and improve security-event detection using Wazuh, Sysmon, Suricata, and controlled attack simulations.
+This virtual lab is designed to test and improve security-event detection using Wazuh, Suricata, endpoint telemetry, and controlled attack simulations.
 
 ## Host System
 
