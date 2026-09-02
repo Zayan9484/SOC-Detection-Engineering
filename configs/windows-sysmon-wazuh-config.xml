@@ -1,0 +1,10 @@
+<!--
+  Wazuh Windows Agent - Sysmon Event Channel Collection
+  Purpose: Collect Sysmon telemetry from the Windows endpoint
+  and forward it to the Wazuh manager for analysis.
+-->
+
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>

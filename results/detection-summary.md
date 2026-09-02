@@ -9,6 +9,7 @@ This document summarizes the detection scenarios implemented in the SOC Detectio
 | 3 | SSH Brute-Force Detection | Multiple failed SSH authentication attempts | Ubuntu authentication logs | Wazuh | Rule `5763` | Level 10 | `T1110` — Brute Force |
 | 4 | Windows Brute-Force Correlation | Multiple failed Windows logon attempts | Windows Security Event ID `4625` | Wazuh | Custom Rule `100100` | Level 10 | `T1110` — Brute Force |
 | 5 | Windows File Integrity Monitoring | File creation, modification, and deletion | Wazuh Syscheck / FIM | Wazuh | Rules `554`, `550`, `553` | Levels 5–7 | N/A |
+| 6 | Encoded PowerShell Execution | Sysmon Event ID 1 | Wazuh Rule 92057 | 12 | T1059.001 - PowerShell |
 
 ## Detection Coverage
 

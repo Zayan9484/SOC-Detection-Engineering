@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This virtual lab is designed to test and improve security-event detection using Wazuh, Suricata, endpoint telemetry, and controlled attack simulations.
+This virtual lab is designed to test and improve security-event detection using Wazuh, Suricata, Sysmon endpoint telemetry, and controlled attack simulations.
 
 ## Host System
 
@@ -19,9 +19,54 @@ This virtual lab is designed to test and improve security-event detection using 
 | Virtual Machine | Purpose | RAM | vCPU |
 |---|---|---:|---:|
 | Wazuh 4.12.0 | SIEM manager, indexer, and dashboard | 6.1 GB | 4 |
-| Windows 10 | Monitored Windows endpoint | 2 GB | 2 |
+| Windows 10 | Monitored Windows endpoint with Wazuh Agent and Sysmon | 2 GB | 2 |
 | Ubuntu 24.04.2 LTS | Linux endpoint and Suricata sensor | 2 GB | 2 |
 | Kali Linux | Controlled attack simulation | 2 GB | 4 |
+
+## Security Monitoring Components
+
+### Wazuh
+
+Wazuh is used as the central security monitoring and detection platform. The lab uses an all-in-one deployment containing:
+
+- Wazuh Manager
+- Wazuh Indexer
+- Wazuh Dashboard
+
+Wazuh agents are installed on the Windows and Ubuntu endpoints.
+
+### Suricata
+
+Suricata 8.0.0 is deployed on the Ubuntu endpoint as the network IDS.
+
+Suricata monitors network traffic and generates alerts in `eve.json`. The Wazuh agent collects these events and forwards them to the Wazuh Manager for analysis.
+
+Custom Suricata rules are also used to detect controlled network activity such as ICMP traffic and TCP SYN port scanning.
+
+### Sysmon
+
+Microsoft Sysinternals Sysmon v15.21 is installed on the Windows 10 endpoint to provide enhanced endpoint telemetry.
+
+Sysmon records detailed Windows activity such as process creation and command-line execution.
+
+The Wazuh agent collects events from:
+
+```text
+Microsoft-Windows-Sysmon/Operational
+```
+
+using the following event-channel configuration:
+
+```xml
+<localfile>
+  <location>Microsoft-Windows-Sysmon/Operational</location>
+  <log_format>eventchannel</log_format>
+</localfile>
+```
+
+Sysmon Event ID `1` (Process Create) was validated during the lab and successfully used by Wazuh to detect encoded PowerShell execution.
+
+Sysmon was installed using its default configuration for this lab. No custom Sysmon XML configuration was deployed.
 
 ## Network Configuration
 
